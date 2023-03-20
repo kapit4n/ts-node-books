@@ -24,7 +24,7 @@ booksRouter.get("/", async (req: Request, res: Response) => {
     res.status(200).send(books)
 
 
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -43,7 +43,7 @@ booksRouter.get("/:id", async (req: Request, res: Response) => {
     }
 
     res.status(404).send("book not found")
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -56,12 +56,12 @@ booksRouter.post("/", async (req: Request, res: Response) => {
     const newBook = await BookService.create(book)
 
     res.status(201).json(newBook)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
 // PUT books/:id
-booksRouter.put("/:id", async(req: request, res: Response) => {
+booksRouter.put("/:id", async(req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10)
 
   try {
@@ -77,7 +77,7 @@ booksRouter.put("/:id", async(req: request, res: Response) => {
     const newBook = await BookService.create(bookUpdate)
 
     res.status(201).json(newBook)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -89,7 +89,7 @@ booksRouter.delete("/:id", async (req: Request, res: Response) => {
     await BookService.remove(id)
 
     res.sendStatus(204)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })

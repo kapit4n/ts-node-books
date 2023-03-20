@@ -26,7 +26,7 @@ itemsRouter.get("/", async (req: Request, res: Response) => {
     res.status(200).send(items)
 
 
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -45,7 +45,7 @@ itemsRouter.get("/:id", async (req: Request, res: Response) => {
     }
 
     res.status(404).send("item not found")
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -58,12 +58,12 @@ itemsRouter.post("/", async (req: Request, res: Response) => {
     const newItem = await ItemService.create(item)
 
     res.status(201).json(newItem)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
 // PUT items/:id
-itemsRouter.put("/:id", async(req: request, res: Response) => {
+itemsRouter.put("/:id", async(req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10)
 
   try {
@@ -79,7 +79,7 @@ itemsRouter.put("/:id", async(req: request, res: Response) => {
     const newItem = await ItemService.create(itemUpdate)
 
     res.status(201).json(newItem)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
@@ -91,7 +91,7 @@ itemsRouter.delete("/:id", async (req: Request, res: Response) => {
     await ItemService.remove(id)
 
     res.sendStatus(204)
-  } catch (e) {
+  } catch (e: any) {
     res.status(500).send(e.message)
   }
 })
