@@ -40,6 +40,11 @@ app.use("/api/books", booksRouter)
 app.use(errorHandler)
 app.use(notFoundHandler)
 
+console.log("77777777777777777777777")
+console.log("77777777777777777777777")
+console.log("77777777777777777777777")
+console.log("77777777777777777777777")
+
 /**
  * Server activation
  */
