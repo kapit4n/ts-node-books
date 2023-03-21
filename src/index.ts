@@ -12,6 +12,18 @@ import { booksRouter } from "./books/books.router"
 import { errorHandler } from './middleware/error.middleware'
 import { notFoundHandler } from './middleware/not-found.middleware'
 
+var mysql = require('mysql');
+var con = mysql.createConnection({
+  host: process.env.MYSQLDB_HOST,
+  user: process.env.MYSQLDB_USER,
+  password: process.env.MYSQLDB_ROOT_PASSWORD
+});
+
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected! to MYSQL");
+});
+
 dotenv.config();
 
 /**
@@ -39,11 +51,6 @@ app.use("/api/books", booksRouter)
 
 app.use(errorHandler)
 app.use(notFoundHandler)
-
-console.log("77777777777777777777777")
-console.log("77777777777777777777777")
-console.log("77777777777777777777777")
-console.log("77777777777777777777777")
 
 /**
  * Server activation
