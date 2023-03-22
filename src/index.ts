@@ -7,22 +7,20 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 
+import db from './db/connection'
 import { itemsRouter } from "./items/items.router"
 import { booksRouter } from "./books/books.router"
 import { errorHandler } from './middleware/error.middleware'
 import { notFoundHandler } from './middleware/not-found.middleware'
 
-var mysql = require('mysql');
-var con = mysql.createConnection({
-  host: process.env.MYSQLDB_HOST,
-  user: process.env.MYSQLDB_USER,
-  password: process.env.MYSQLDB_ROOT_PASSWORD
-});
-
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected! to MYSQL");
-});
+(async function() {
+  try {
+    await db.authenticate()
+    console.log('Connection has been established successfully YYYYYY')
+  } catch(error) {
+    console.error('Unable to connecty to the database:', error)
+  }
+})()
 
 dotenv.config();
 
@@ -58,4 +56,3 @@ app.use(notFoundHandler)
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
 })
-
