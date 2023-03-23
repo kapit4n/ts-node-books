@@ -2,6 +2,7 @@
  * Data Model Interfaces
  */
 
+import BookModel from "../db/book"
 import { BaseBook, Book } from "./book.interface"
 import { Books } from "./books.interface"
 
@@ -21,7 +22,17 @@ let books: Books = {
 /**
  * Service Methods
  */
-export const findAll = async (): Promise<Book[]> => Object.values(books)
+export const findAll = async (): Promise<Book[]> => {
+  const allBooks = await BookModel.findAll()
+  return allBooks.map((b: BookModel) => {
+    return {
+      name: b.name,
+      description: b.description,
+      image: b.image,
+      price: b.price
+    }
+  })
+}
 
 export const find = async (id: number): Promise<Book> => books[id]
 
@@ -46,7 +57,7 @@ export const update = async (
     return null
   }
 
-  books[id] = {id, ...booksUpdate}
+  books[id] = { id, ...booksUpdate }
 
   return books[id]
 }

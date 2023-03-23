@@ -8,21 +8,24 @@ import cors from "cors"
 import helmet from "helmet"
 
 import db from './db/connection'
+import BookModel, { createBooks } from './db/book'
 import { itemsRouter } from "./items/items.router"
 import { booksRouter } from "./books/books.router"
 import { errorHandler } from './middleware/error.middleware'
 import { notFoundHandler } from './middleware/not-found.middleware'
 
+dotenv.config();
+
 (async function() {
   try {
     await db.authenticate()
-    console.log('Connection has been established successfully YYYYYY')
+    BookModel.sync({force: true});
+    await createBooks();
   } catch(error) {
     console.error('Unable to connecty to the database:', error)
   }
 })()
 
-dotenv.config();
 
 /**
  * App Variables
@@ -49,6 +52,7 @@ app.use("/api/books", booksRouter)
 
 app.use(errorHandler)
 app.use(notFoundHandler)
+
 
 /**
  * Server activation
