@@ -4,22 +4,11 @@
 
 import BookModel from "../db/book"
 import { BaseBook, Book } from "./book.interface"
-import { Books } from "./books.interface"
 
 /**
  * In-Memory Store
  */
-let books: Books = {
-  1: {
-    id: 1,
-    name: "Zero to One",
-    author: "Zero to One",
-    pages: 100,
-    price: 100,
-    description: "Bussiness related book",
-    image: "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51JkDEpHUQL.jpg"
-  }
-}
+
 
 /**
  * Service Methods
