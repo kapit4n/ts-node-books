@@ -19,13 +19,12 @@ dotenv.config();
 (async function() {
   try {
     await db.authenticate()
-    BookModel.sync({force: true});
-    await createBooks();
+    BookModel.sync();
+    // await createBooks();
   } catch(error) {
-    console.error('Unable to connecty to the database:', error)
+    console.error('Error:', error)
   }
 })()
-
 
 /**
  * App Variables

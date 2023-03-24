@@ -67,7 +67,7 @@ booksRouter.put("/:id", async(req: Request, res: Response) => {
   try {
     const bookUpdate: Book = req.body;
 
-    const existingBook: Book = await BookService.find(id)
+    const existingBook = await BookService.find(id)
 
     if (existingBook) {
       const updatedBook = await BookService.update(id, bookUpdate)

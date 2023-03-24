@@ -1,6 +1,8 @@
 export interface BaseBook {
   name: string;
+  author: string;
   price: number;
+  pages: number;
   description: string;
   image: string;
 }

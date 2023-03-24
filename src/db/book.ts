@@ -14,7 +14,7 @@ BookModel.init({
     allowNull: false
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: true
   },
   image: {
@@ -28,18 +28,32 @@ BookModel.init({
 }, { sequelize: db, modelName: 'Books' });
 
 export async function createBooks() {
+
   await BookModel.create({
-    name: "Elon Musk",
-    description: "Elon Reeve Musk FRS is a business magnate and investor.",
-    price: 60,
-    image: "https://www.investopedia.com/thmb/sFi7zDFVLekmI6JiMcrLsNOyKAU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/how-elon-musk-became-elon-musk_final-43ef802cd2414d14a8bf3967f319ce18.png"
+    name: "El Poder de lo Habitos",
+    description: "En esencia, El poder de los hábitos contiene un mensaje estimulante: la clave para hacer ejercicio con regularidad, perder peso, ser más productivo y conseguir el éxito consiste en entender el modo en que funcionan los hábitos.",
+    feedback: "",
+    author: "Charles Duhigg",
+    price: 50,
+    pages: 320,
+    image: "https://assets-libr.cantook.net/medias/8b/2c42e1b3fd0c20e4f462ac2c89a7d336aee459.jpg"
   });
 
   await BookModel.create({
-    name: "Tiende tu Cama",
-    description: "Elon Reeve Musk FRS is a business magnate and investor.",
-    price: 60,
+    name: "El poder del metabolismo",
+    description: "El libro define las causas y soluciones al problema del metabolismo lento que tiene algunos haciendo dieta de por vida mientras otros son flacos coman lo que coman. Por lo tanto se concluye que bajar de peso no tiene que ver solo con lo que usted come.",
+    author: "Frank Suarez",
+    price: 50,
+    pages: 388,
+    image: "https://m.media-amazon.com/images/I/81ufFIPZuaL.jpg"
+  });
+
+  await BookModel.create({
+    name: "Tiende tu cama",
+    description: "Sinopsis de Tiende tu cama y otros pequeños hábitos que cambiarán tu vida y el mundo: Si quieres cambiar el mundo, comienza por tender tu cama. Si tiendes tu cama al despertar, habrás cumplido con tu primera tarea.",
+    author: "William H. McRaven",
+    price: 25,
+    pages: 128,
     image: "https://m.media-amazon.com/images/I/81Ae1rVs5vL.jpg"
   });
-
 }
