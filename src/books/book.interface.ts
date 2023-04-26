@@ -3,6 +3,7 @@ export interface BaseBook {
   author: string;
   price: number;
   pages: number;
+  readPages: number;
   description: string;
   image: string;
 }
