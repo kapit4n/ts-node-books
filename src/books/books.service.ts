@@ -24,6 +24,7 @@ export const findAll = async (): Promise<Book[]> => {
       image: b.image,
       price: b.price,
       pages: b.pages,
+      readPages: b.readPages,
     }
   })
 }
