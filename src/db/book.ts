@@ -41,6 +41,14 @@ BookModel.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
+  lastReadingDate: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  startReadingDate: {
+    type: DataTypes.DATE,
+    allowNull: true
+  },
 }, { sequelize: db, modelName: 'Books' });
 
 export async function createBooks() {
@@ -53,7 +61,8 @@ export async function createBooks() {
     price: 50,
     pages: 320,
     readPages: 320,
-
+    lastReadingDate: new Date(),
+    startReadingDate: new Date(2022, 6, 6), 
     image: "https://assets-libr.cantook.net/medias/8b/2c42e1b3fd0c20e4f462ac2c89a7d336aee459.jpg"
   });
 
@@ -65,6 +74,8 @@ export async function createBooks() {
     price: 50,
     pages: 388,
     readPages: 388,
+    lastReadingDate: new Date(),
+    startReadingDate: new Date(2022, 6, 6), 
     image: "https://m.media-amazon.com/images/I/81ufFIPZuaL.jpg"
   });
 
@@ -76,6 +87,8 @@ export async function createBooks() {
     price: 25,
     pages: 128,
     readPages: 128,
+    lastReadingDate: new Date(),
+    startReadingDate: new Date(2022, 9, 6), 
     image: "https://m.media-amazon.com/images/I/81Ae1rVs5vL.jpg"
   });
 
@@ -87,6 +100,8 @@ export async function createBooks() {
     price: 60,
     pages: 396,
     readPages: 342,
+    lastReadingDate: new Date(),
+    startReadingDate: new Date(2022, 11, 6), 
     image: "https://www.trebolarium.com/wp-content/uploads/2018/11/club-de-las-cindo-de-la-ma%C3%B1ana.png"
   });
 
@@ -98,6 +113,8 @@ export async function createBooks() {
     price: 30,
     pages: 188,
     readPages: 128,
+    lastReadingDate: new Date(),
+    startReadingDate: new Date(2022, 12, 6), 
     image: "https://www.rafaelsantandreu.es/wp-content/uploads/2021/10/lasgafas-3d-1.png"
   });
 }

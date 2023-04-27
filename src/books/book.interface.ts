@@ -4,6 +4,8 @@ export interface BaseBook {
   price: number;
   pages: number;
   readPages: number;
+  lastReadingDate: Date;
+  startReadingDate: Date;
   description: string;
   image: string;
 }
