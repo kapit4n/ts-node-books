@@ -35,8 +35,7 @@ booksRouter.get("/:id", async (req: Request, res: Response) => {
   const id: number = parseInt(req.params.id, 10)
 
   try {
-
-    const book: Book = await BookService.find(id)
+    const book: Book | null = await BookService.find(id)
 
     if (book) {
       return res.status(200).send(book)

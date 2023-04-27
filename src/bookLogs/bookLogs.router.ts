@@ -55,9 +55,8 @@ bookLogsRouter.post("/", async (req: Request, res: Response) => {
 bookLogsRouter.delete("/:id", async (req: Request, res: Response) => {
   try {
     const id: number = parseInt(req.params.id, 10)
-    await BookLogService.remove(id)
-
-    res.sendStatus(204)
+    const removeResult = await BookLogService.remove(id)
+    res.status(204).json(removeResult)
   } catch (e: any) {
     res.status(500).send(e.message)
   }
