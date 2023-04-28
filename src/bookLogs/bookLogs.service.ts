@@ -30,7 +30,7 @@ export const create = async (newItem: BaseBookLog): Promise<BookLog> => {
   // update book readPages field
   const book = await BookModel.findByPk(created.bookId)
   book.readPages = (book.readPages || 0) + created.readPages
-  book.lastReadDate = new Date()
+  book.lastReadingDate = new Date()
   await book.save()
 
   return created
