@@ -11,4 +11,6 @@ docker run -p 7000:7000 books
 # DONE
 - books(get, post, put, delete)
 - bookLogs(get, post, delete)
-- 
+
+https://github.com/kapit4n/ts-books
+
